@@ -63,10 +63,10 @@ Auth::routes();
 Route::get('signup', 'PersonController@getSignup');
 Route::post('signup', 'PersonController@postSignup');
 Route::get('profile','HomeController@index');
+Route::post('profile','HomeController@index')->name('profile');
 Route::get('tutorial','HomeController@tutorial')->name('tutorial');
 Route::get('fix/{idPerson}','HomeController@fix');
 Route::post('fix/{idPerson}','HomeController@postFix');
-
 Route::get('test', function(){
    $user = JoinCourse::find(2);
    $lesson = $user->takeLike;

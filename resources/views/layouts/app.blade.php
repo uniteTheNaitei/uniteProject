@@ -113,7 +113,7 @@
                                     <li>
                                         <a class="fh5co-sub-ddown">{{Auth::user()->name}}</a>
                                         <ul class="fh5co-sub-menu">
-                                            <li><a href="/profile">My Profile</a></li>
+                                            <li><a href="/profile">My Page</a></li>
                                             <a href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
