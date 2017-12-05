@@ -57,7 +57,6 @@ Route::get('index', 'MainController@index');
 Route::get('/', 'MainController@index');
 
 Route::get('about', 'MainController@about');
-
 Auth::routes();
 Route::get('signup', 'PersonController@getSignup');
 Route::post('signup', 'PersonController@postSignup');
@@ -65,3 +64,4 @@ Route::get('profile','HomeController@index');
 Route::get('tutorial','HomeController@tutorial')->name('tutorial');
 Route::get('fix/{idPerson}','HomeController@fix');
 Route::post('fix/{idPerson}','HomeController@postFix');
+Route::get('course/{id}','CourseController@viewDetail')->name('course');

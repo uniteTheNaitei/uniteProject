@@ -237,19 +237,21 @@
 
 							<div class="fh5co-blog animate-box">
 								<div class="inner-post">
-									<a href="#"><img class="img-responsive" src={{$post->img_1}} alt=""></a>
+									<a href="#"><img class="img-responsive" style="max-height: 200px" src={{$post->img_1}} alt=""></a>
 								</div>
 								 <div class="desc">
 								 	<!-- Fit link here -->
 									<h3><a href=""#>{{$post->name}}</a></h3>
 									<span class="posted_by">Posted by: Admin</span>
 									<span class="comment"><a href="">21<i class="icon-bubble22"></i></a></span>
-									<p>Far far away, behind the word mountains</p>
-									<a href="#" class="btn btn-default">Read More</a>
 
 
-
-								</div>
+									<p>This project actually likes a pennis</p>
+									<a href="/course/{{$post->idCourse}}" class="btn btn-default">Read More</a>
+				                    
+				                    
+				                    
+								</div> 
 							</div>
 						</div>
 
