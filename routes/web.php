@@ -74,7 +74,7 @@ Route::get('test', function(){
 });
 
 Route::get('test1', function() {
-   $course = BlogPost::find(1);
-   $person = $course->takeLike;
+   $course = Person::find(52);
+   $person = $course->JoinCourse;
    echo count($person);
 });
