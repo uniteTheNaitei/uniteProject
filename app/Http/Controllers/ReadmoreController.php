@@ -100,6 +100,9 @@ class ReadmoreController extends Controller
               takeLesson::where('idJoinCourse' , $value->idJoinCourse)->where('stt',$value->stt)->update(['complete'=> $c]);                
             }
         }
-        return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a]);
+       $joincourse = Auth::user() -> idjoinCourse -> where('idCourse',  $request->check) -> first();
+       $a = $joincourse -> takeLesson;
+       $time = $joincourse-> startTime;
+       return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time]);
    }
 }
