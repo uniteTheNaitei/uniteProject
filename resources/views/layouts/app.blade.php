@@ -73,6 +73,7 @@
                                 </li>
 
                                 <li><a href="{{route('trainer')}}">Trainers</a></li>
+                                <li><a href="{{route('most_popular')}}">Most Popular</a></li>
 
                                 @guest
                                     <li><a href="/login">Login</a></li>

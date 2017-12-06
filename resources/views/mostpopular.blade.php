@@ -14,11 +14,11 @@
                 <div class="col-md-6">
                     <div class="col-md-12">
                         <div class="heading-section animate-box">
-                            <h2>Recently Blog</h2>
-
+                            <h2>Most Popular Course</h2>
                         </div>
                     </div>
                     <?php $i = 1; ?>
+
                     @if (count($course))
                         @foreach ($course as $post)
                             <div class="col-md-12 col-md-offset-0">
@@ -32,9 +32,7 @@
                                     <div class="desc">
                                         <!-- Fit link here -->
                                         <h3><a href="" #>{{$post->name}}</a></h3>
-                                        <span class="posted_by">Posted by: {{$post->trainer->name}}</span>
-                                        <span class="comment"><a href="">{{count($post->comment)}}<i class="icon-bubble22"></i></a></span>
-                                        <p>Like : {{count($post->takeLike)}}</p>
+                                        <p> like : {{$post->count}}</p>
                                         <a href="/course/{{$post->idCourse}}" class="btn btn-default">Read More</a>
 
 
