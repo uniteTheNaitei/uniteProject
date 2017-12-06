@@ -22,6 +22,9 @@ use App\BlogPost;
 Route::get('/index', function() {
     return view('index');
 });
+
+Route::get('/blog/create', 'PostController@create');
+Route::post('/blog/create', 'PostController@store')->name('create');
 Route::group(['prefix'=>'admin'],function() {
     Route::group(['prefix' => 'person'], function () {
         Route::get('list', 'PersonController@getList');
@@ -72,6 +75,7 @@ Route::post('checkcourse','ReadmoreController@postJoin')->name('checkcourse');
 Route::get('blog', 'PostController@index');
 Route::post('blog', 'PostController@create')->name('blog');
 Route::get('/blog/show/{idPost}', 'PostController@show');
+Route::post('add_comment', 'CommentPostController@store')->name('addcomment');
 
 Route::get('trainer','TrainerControllers@getAllTrainer')->name('trainer');
 Route::get('trainer/course/{idCoach}','TrainerControllers@getCourseTrainer');

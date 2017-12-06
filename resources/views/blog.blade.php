@@ -1,32 +1,50 @@
     @extends('layouts.app')
-   
+    <style type="text/css">.ds-btn li{ list-style:none; float:left; padding:10px; }
+.ds-btn li a span{padding-left:15px;padding-right:5px;width:100%;display:inline-block; text-align:left;}
+.ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
+</style>
     @section('content')
     @if ( !$posts->count() )
     There is no post till now. Login and write a new post now!!!
     @else
+    <br>
+    <div class="container">
+    <ul class="ds-btn">
+     
+        
+        <li>
+             <a class="btn btn-lg btn-success " href="{{route('create')}}">
+         <i class="glyphicon glyphicon-dashboard pull-left"></i><span>Create your own blog<br></span></a> 
+            
+        </li>
+        
+      </ul>
+    </div>
+      <br> 
     <div class="container">
       <br>
-      @foreach( $posts as $post )
+      
+      @for($i = 0; $i < count($posts); $i++)
       <div class="list-group">
         <div class="list-group-item" style="padding:  10px">
-          <h3><a href="{{ url('blog/show/'.$post->idPost) }}" >{{ $post->title }}</a>
-            @if(!Auth::guest() && ($post->idUser == Auth::user()->id))
-              @if($post)
-              <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->idPost)}}">Edit Post</a></button>
+          <h3><a href="{{ url('blog/show/'.$posts[$i]->idPost) }}" >{{ $posts[$i]->title }}</a>
+            @if(!Auth::guest() && ($posts[$i]->idUser == Auth::user()->id))
+              @if($posts[$i])
+              <button class="btn" style="float: right"><a href="{{ url('edit/'.$posts[$i]->idPost)}}">Edit Post</a></button>
               @else
-              <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->idPost)}}">Edit Draft</a></button>
+              <button class="btn" style="float: right"><a href="{{ url('edit/'.$posts[$i]->idPost)}}">Edit Draft</a></button>
               @endif
             @endif
           </h3>
-          <p> Created by <a href="{{ url('/user/'.$post->idUser)}}">{{ $post->idUser }}</a></p>
+          <p> Created by <a href="{{ url('/user/'.$names[$i]->name)}}">{{ $names[$i]->name }}</a></p>
         </div>
         <div class="list-group-item">
           <article>
-            {!! str_limit($post->content, $limit = 1500, $end = '....... <a href='.url("/".$post->idPost).'>Read More</a>') !!}
+            {!! str_limit($posts[$i]->content, $limit = 1500, $end = '....... <a href='.url("/".$posts[$i]->idPost).'>Read More</a>') !!}
           </article>
         </div>
       </div>
-      @endforeach
+      @endfor
       {!! $posts->render() !!}
     </div>
     @endif
