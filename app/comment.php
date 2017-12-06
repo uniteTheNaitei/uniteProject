@@ -10,8 +10,8 @@ class comment extends Model
 	protected $primaryKey = "idComment";
     //
 	
-	public function likedPerson() {
-		return $this->hasManyThrough('App\Person', 'App\takelike', 'idPost', 'idPerson', 'idComment', 'idPerson');
+	public function like(){
+		return $this->hasMany('App\takelike', 'idPost', 'idComment')->where('likeType', 3);
 	}
 	
 	public function person() {

@@ -14,6 +14,7 @@ use App\Person;
 use App\Course;
 use App\comment;
 use App\JoinCourse;
+use App\BlogPost;
 
 // Route::get('/', function () {
 //     return view('index');
@@ -61,9 +62,16 @@ Auth::routes();
 Route::get('signup', 'PersonController@getSignup');
 Route::post('signup', 'PersonController@postSignup');
 Route::get('profile','HomeController@index');
+Route::post('profile','HomeController@index')->name('profile');
 Route::get('tutorial','HomeController@tutorial')->name('tutorial');
 Route::get('fix/{idPerson}','HomeController@fix');
 Route::post('fix/{idPerson}','HomeController@postFix');
 Route::get('course/{id}','ReadmoreController@viewDetail')->name('course');
 Route::get('coursejoin/{idCourse}','ReadmoreController@join');
 Route::post('checkcourse','ReadmoreController@postJoin')->name('checkcourse');
+Route::get('blog', 'PostController@index');
+Route::post('blog', 'PostController@create')->name('blog');
+Route::get('/blog/show/{idPost}', 'PostController@show');
+
+Route::get('trainer','TrainerControllers@getAllTrainer')->name('trainer');
+Route::get('trainer/course/{idCoach}','TrainerControllers@getCourseTrainer');

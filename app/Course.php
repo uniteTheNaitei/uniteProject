@@ -19,11 +19,11 @@ class Course extends Model
 		return $this->hasManyThrough('App\Person', 'App\JoinCourse', 'idCourse', 'idPerson', 'idCourse', 'idUser');
 	}
 	public function takelike(){
-		return $this->hasMany('App\takelike', 'idPost', 'idCourse');
+		return $this->hasMany('App\takelike', 'idPost', 'idCourse')->where('likeType', 1);
 	}
 	
 	public function comment(){
-		return $this->hasMany('App\comment', 'idPost', 'idCourse');
+		return $this->hasMany('App\comment', 'idPost', 'idCourse')->where('type', 1);
 	}
 	
 	public function trainer(){
