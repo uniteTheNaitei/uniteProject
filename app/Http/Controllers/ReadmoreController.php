@@ -19,12 +19,14 @@ class ReadmoreController extends Controller
      public function viewDetail($id){
       	$course=Course::find($id);
       	$lesson = $course -> lesson;
-      	$coursejoined=Auth::user()->joinCourse;
+      	$coursejoined=Auth::user()->idjoinCourse;
       	$b=0;
+
       	foreach ($coursejoined as $value)
       	{
       		if ($value->idCourse==$id) 
       		{
+      		    $joinCourseId = $value;
       			$b=1;
       			// $joincourse= $value;
       		  
@@ -35,8 +37,8 @@ class ReadmoreController extends Controller
       	} 
            else {
       	  	 $a = auth::user() -> idjoinCourse -> where('idCourse', $id) -> first() -> takeLesson;
-
-      		   return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a]);
+      	  	 $timeStamps = $joinCourseId -> startTime;
+      		   return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a,"time"=>$timeStamps]);
       	} 
      	// $checkJoin=0;
      	// $joincourse = JoinCourse::where('idUser',Auth::user()->idPerson)->where('idCourse',$id)->first();
@@ -62,8 +64,10 @@ class ReadmoreController extends Controller
          $takeLesson->stt=$value->stt;
          $takeLesson->save();
       };
+      $joincourse = Auth::user() -> idjoinCourse -> where('idCourse', $id) -> first();
        $a = $joincourse -> takeLesson;
-     return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a]);
+       $time = $joincourse-> startTime;
+     return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time]);
    }
    public function postJoin(Request $request)
    {
@@ -74,7 +78,7 @@ class ReadmoreController extends Controller
        // die(); 
        
        //$a = JoinCourse::find(1) -> takelesson;
-      
+
        foreach ($a as $value)
           {   
               $c=0;

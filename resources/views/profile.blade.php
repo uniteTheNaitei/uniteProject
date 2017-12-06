@@ -100,7 +100,7 @@
                                 <span class="posted_by">Posted by: {{$post->trainer->name}}</span>
                                 <span class="comment"><a href="">{{count($post->comment)}}<i class="icon-bubble22"></i></a></span>
                                 <p>{{$post->info}}</p>
-                                <a href="#" class="btn btn-default">Read More</a>
+                                <a href="/course/{{$post->idCourse}}" class="btn btn-default">Read More</a>
 
 
                             </div>
@@ -183,9 +183,7 @@
                                 <span class="posted_by">Posted by: {{$post->trainer->name}}</span>
                                 <span class="comment"><a href="">{{count($post->comment)}}<i class="icon-bubble22"></i></a></span>
                                 <p>{{$post->info}}</p>
-                                <a href="#" class="btn btn-default">Continue...</a>
-
-
+                                <a href="/course/{{$post->idCourse}}" class="btn btn-default">Read More</a>
                             </div>
                         </div>
                     </div>
