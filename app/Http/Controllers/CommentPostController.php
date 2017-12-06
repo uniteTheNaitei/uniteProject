@@ -9,6 +9,8 @@
 
     class CommentPostController extends Controller {
       public function store(Request $request)
+    }
+
       {
         //on_post, from_user, body
         $input = new comment();
@@ -19,4 +21,3 @@
         $input->save();
         return redirect()->back();   
       }
-    }
