@@ -4,7 +4,7 @@
 .ds-btn li a span small{width:100%; display:inline-block; text-align:left;}
 </style>
     @section('content')
-    @if ( !$posts->count() )
+    @if ( !count($posts) )
     There is no post till now. Login and write a new post now!!!
     @else
     <br>
@@ -28,9 +28,35 @@
       <div class="list-group">
         <div class="list-group-item" style="padding:  10px">
           <h3><a href="{{ url('blog/show/'.$posts[$i]->idPost) }}" >{{ $posts[$i]->title }}</a>
+            <div style="float: right;">
+            <?php $c=0 ?>     
+            @if($likdedPostId!=NULL)
+            @foreach($likdedPostId as $value)
+               @if($posts[$i]->idPost==$value->idPost)  
+                   <?php $c=1 ?>         
+               @endif
+            @endforeach
+            @endif
+           
+            @if($c==0)
+            <form method="post"  action="{{route('like')}}">
+              {{csrf_field()}}
+               <fieldset>                   
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                <input type="hidden" name="post"  value="{{ $posts[$i]->idPost }}" />
+                <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+                <input type="submit" value="Like" class="btn btn-default" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
+            @else 
+               <button class="btn btn-success" disabled>Liked</button>
+            @endif
+           
+              <fieldset>     
+          </form>
+        </div>
             @if(!Auth::guest() && ($posts[$i]->idUser == Auth::user()->id))
               @if($posts[$i])
               <button class="btn" style="float: right"><a href="{{ url('edit/'.$posts[$i]->idPost)}}">Edit Post</a></button>
+     
               @else
               <button class="btn" style="float: right"><a href="{{ url('edit/'.$posts[$i]->idPost)}}">Edit Draft</a></button>
               @endif
