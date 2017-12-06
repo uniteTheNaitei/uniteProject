@@ -24,7 +24,6 @@ class TrainerControllers extends Controller
         $person = Person::where('idPerson',$idCoach)->first();
         $name = $person->name;
         $course = course::where('idCoach', $idCoach)->paginate(4);
-        $course->setPath('coursetrainer');
         return view('coursetrainer')->with('course', $course)->with('user',Auth::user())->with('name',$name);
     }
 }
