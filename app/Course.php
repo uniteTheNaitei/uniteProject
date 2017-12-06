@@ -10,6 +10,8 @@ class Course extends Model
     protected $table = "course";
     public $timestamps = false;
     protected $primaryKey = 'idCourse';
+
+
 	
 	public function lesson() {
 		return $this->hasMany('App\Lesson','idCourse', 'idCourse');
