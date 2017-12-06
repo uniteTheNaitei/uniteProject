@@ -69,7 +69,7 @@
                                     <a href="/">Home</a>
                                 </li>
                                 <li>
-                                    <a href="blog">Blog</a>
+                                  <a href="{{route('blog')}}">Blog</a>
                                 </li>
 
                                 <li><a href="{{route('trainer')}}">Trainers</a></li>

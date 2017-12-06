@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\BlogPost;
 use App\comment;
 use App\Http\Requests\PostFormRequest;
+
 use App\Person;
+
 
 class PostController extends Controller
 {
@@ -20,7 +22,15 @@ class PostController extends Controller
             $p = Person::where('idPerson', $posts[$i]->idUser)->first();
             array_push($names, $p);
         }
-    	return view('blog')->withPosts($posts)->withTitle($title)->with('names', $names);
+    	
+         $user = Auth::user();
+         $likdedPostId = $user->likedBlog;
+    	// $posts = BlogPost::where('idPost', '>', 0)->orderBy('Time')->paginate(5) ;
+    	// $title = 'Latest Posts';
+        // var_dump($likdedPostId);
+        // die();
+    	// return view('blog',["likdedPostId"=>$likdedPostId,"posts"=>$posts,"title"=>$title]);
+        return view('blog')->withPosts($posts)->withTitle($title)->with('names', $names)->with('likdedPostId', $likdedPostId);
     }
 
     public function create(Request $request) {
