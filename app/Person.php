@@ -30,7 +30,7 @@ class Person extends Authenticatable
 
 	
 	public function permission(){
-		return $this->hasOne('App\Permission', 'idperson', 'idPerson');
+		return $this->hasOne('App\Permission', 'idperson', 'idPerson') -> type;
 	} 
 	
 	public function joinCourse(){
