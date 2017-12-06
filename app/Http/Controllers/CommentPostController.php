@@ -1,20 +1,22 @@
-
-    <?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
     use App\Posts;
-    use App\Comments;
+    use App\comment;
     use Redirect;
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
-    class CommentController extends Controller {
+    use Illuminate\Support\Facades\Auth;
+
+    class CommentPostController extends Controller {
       public function store(Request $request)
       {
         //on_post, from_user, body
-        $input['from_user'] = $request->Auth::user()->id;
-        $input['on_post'] = $request->input('on_post');
-        $input['body'] = $request->input('body');
-        $slug = $request->input('slug');
-        Comments::create( $input );
-        return redirect($slug)->with('message', 'Comment published');     
+        $input = new comment();
+        $input->idUser = Auth::user()->idPerson;
+        $input->idPost = $request->get('on_post');
+        $input->content = $request->get('body');
+        $input->type = 1;
+        $input->save();
+        return redirect()->back();   
       }
     }

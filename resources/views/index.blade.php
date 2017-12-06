@@ -15,6 +15,7 @@
                     <div class="col-md-12">
                         <div class="heading-section animate-box">
                             <h2>Recently Blog</h2>
+
                         </div>
                     </div>
                     <?php $i = 1; ?>

@@ -8,6 +8,7 @@ class comment extends Model
 {
 	protected $table = "comment";
 	protected $primaryKey = "idComment";
+	public $timestamps = false;
     //
 	
 	public function like(){
