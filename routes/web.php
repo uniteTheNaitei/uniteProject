@@ -67,18 +67,10 @@ Route::post('profile','HomeController@index')->name('profile');
 Route::get('tutorial','HomeController@tutorial')->name('tutorial');
 Route::get('fix/{idPerson}','HomeController@fix');
 Route::post('fix/{idPerson}','HomeController@postFix');
-Route::get('test', function(){
-   $user = JoinCourse::find(2);
-   $lesson = $user->takeLike;
-   echo $user;
-});
-
-Route::get('test1', function() {
-   $course = Person::find(52);
-   $person = $course->JoinCourse;
-   echo count($person);
-});
-
 Route::get('blog', 'PostController@index');
 Route::post('blog', 'PostController@create')->name('blog');
 Route::get('/blog/show/{idPost}', 'PostController@show');
+
+Route::get('trainer','TrainerControllers@getAllTrainer')->name('trainer');
+Route::get('trainer/course/{idCoach}','TrainerControllers@getCourseTrainer');
+

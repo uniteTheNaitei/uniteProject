@@ -1,29 +1,34 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Fitness &mdash; 100% Free With Us</title>
+    <title>Fitness &mdash; 100% Free with us</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="aaa" />
-    <meta name="keywords" content="bbb" />
-    <meta name="author" content="ccc" />
+    <meta name="description" content="Free with us"/>
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
+    <meta name="author" content="FREEHTML5.CO"/>
 
-    <!-
+    <!--
+
+
     <!-- Facebook and Twitter integration -->
     <meta property="og:title" content=""/>
     <meta property="og:image" content=""/>
     <meta property="og:url" content=""/>
     <meta property="og:site_name" content=""/>
     <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="favicon.ico">
@@ -32,7 +37,6 @@
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{Asset('assets/css/animate.css')}}">
-
 
 
     <!-- Icomoon Icon Fonts-->
@@ -76,12 +80,24 @@
                                         <li>
                                             <a href="#" class="fh5co-sub-ddown">Free HTML5</a>
                                             <ul class="fh5co-sub-menu">
-                                                <li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
-                                                <li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
-                                                <li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
-                                                <li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
-                                                <li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
-                                                <li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
+                                                       target="_blank">Build</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
+                                                       target="_blank">Work</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
+                                                       target="_blank">Light</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
+                                                       target="_blank">Relic</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
+                                                       target="_blank">Display</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
+                                                       target="_blank">Sprint</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">UI Animation</a></li>
@@ -90,26 +106,25 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="blog">Blog</a>
+                                    <a href="schedule.html">Schedule</a>
                                 </li>
-
                                 <li><a href="{{route('trainer')}}">Trainers</a></li>
-
                                 <li><a href="about.html">About</a></li>
                                 @guest
                                     <li><a href="/login">Login</a></li>
                                 @else
                                     <li>
-                                        <a class="fh5co-sub-ddown">{{Auth::user()->name}}</a>
+                                        <a class="fh5co-sub-ddown">{{$user->name}}</a>
                                         <ul class="fh5co-sub-menu">
-                                            <li><a href="/profile">My Page</a></li>
+                                            <li><a href="{{route('profile')}}">My Profile</a></li>
                                             <a href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                 Logout
                                             </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                  style="display: none;">
                                                 {{ csrf_field() }}
                                             </form>
                                         </ul>
@@ -124,11 +139,12 @@
         <!-- end:fh5co-header -->
         <div class="fh5co-hero">
             <div class="fh5co-overlay"></div>
-            <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/assets/images/home-image.jpg);">
+            <div class="fh5co-cover" data-stellar-background-ratio="0.5"
+                 style="background-image: url(/assets/images/home-image.jpg);">
                 <div class="desc animate-box">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-7">
+                            <div class="col-m	d-7">
                                 <h2>Fitness &amp; Health <br>is a <b>Mentality</b></h2>
                             </div>
                         </div>
@@ -136,7 +152,56 @@
                 </div>
             </div>
         </div>
-        @yield("content")
+
+
+        <div id="fh5co-blog-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="heading-section animate-box">
+                                <h2>{{$name}}'s Courses : </h2>
+                            </div>
+                        </div>
+                        <?php $i = 1; ?>
+                        @if (count($course))
+                            @foreach ($course as $post)
+                                <div class="col-md-12 col-md-offset-0">
+
+
+                                    <div class="fh5co-blog animate-box">
+                                        <div class="inner-post">
+                                            <a href="#"><img class="img-responsive" src={{$post->img_1}} alt=""></a>
+                                        </div>
+                                        <div class="desc">
+                                            <!-- Fit link here -->
+                                            <h3><a href="" #>{{$post->name}}</a></h3>
+                                            <span class="posted_by">Posted by: {{$post->trainer->name}}</span>
+                                            <span class="comment"><a href="">{{count($post->comment)}}<i
+                                                            class="icon-bubble22"></i></a></span>
+                                            <p>{{$post->info}}</p>
+                                            <a href="#" class="btn btn-default">Read More</a>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endforeach
+                        @endif
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="a">
+            <ul class="a">
+                {!! $course->render() !!}
+            </ul>
+        </div>
+        <!-- fh5co-blog-section -->
 
         <footer>
             <div id="footer">
@@ -144,13 +209,16 @@
                     <div class="row">
                         <div class="col-md-4 animate-box">
                             <h3 class="section-title">About Us</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+                                there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
+                                the Semantics.</p>
                         </div>
 
                         <div class="col-md-4 animate-box">
                             <h3 class="section-title">Our Address</h3>
                             <ul class="contact-info">
-                                <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016</li>
+                                <li><i class="icon-map-marker"></i>198 West 21th Street, Suite 721 New York NY 10016
+                                </li>
                                 <li><i class="icon-phone"></i>+ 1235 2355 98</li>
                                 <li><i class="icon-envelope"></i><a href="#">info@yoursite.com</a></li>
                                 <li><i class="icon-globe2"></i><a href="#">www.yoursite.com</a></li>
@@ -169,10 +237,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="message" class="sr-only">Message</label>
-                                    <textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
+                                    <textarea class="form-control" id="message" rows="7"
+                                              placeholder="Message"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message">
+                                    <input type="submit" id="btn-submit" class="btn btn-send-message btn-md"
+                                           value="Send Message">
                                 </div>
                             </form>
                         </div>
@@ -186,7 +256,9 @@
                                 <a href="#"><i class="icon-dribbble2"></i></a>
                                 <a href="#"><i class="icon-youtube"></i></a>
                             </p>
-                            <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i class="icon-heart3"></i> by <a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a> / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
+                            <p>Copyright 2016 Free Html5 <a href="#">Fitness</a>. All Rights Reserved. <br>Made with <i
+                                        class="icon-heart3"></i> by <a href="http://freehtml5.co/" target="_blank">Freehtml5.co</a>
+                                / Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
                         </div>
                     </div>
                 </div>
