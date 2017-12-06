@@ -64,4 +64,6 @@ Route::get('profile','HomeController@index');
 Route::get('tutorial','HomeController@tutorial')->name('tutorial');
 Route::get('fix/{idPerson}','HomeController@fix');
 Route::post('fix/{idPerson}','HomeController@postFix');
-Route::get('course/{id}','CourseController@viewDetail')->name('course');
+Route::get('course/{id}','ReadmoreController@viewDetail')->name('course');
+Route::get('coursejoin/{idCourse}','ReadmoreController@join');
+Route::post('checkcourse','ReadmoreController@postJoin')->name('checkcourse');

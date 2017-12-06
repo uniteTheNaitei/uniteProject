@@ -36,6 +36,10 @@ class Person extends Authenticatable
 	public function joinCourse(){
 		return $this->hasManyThrough('App\Course', 'App\JoinCourse', 'idUser', 'idCourse', 'idPerson', 'idCourse');
 	}
+
+	public function idjoinCourse(){
+		return $this -> hasMany('App\JoinCourse', 'idUser', 'idPerson');
+	}
 	
 	public function createdCourse(){
 		return $this->hasMany('App\Course', 'idCoach', 'idPerson');

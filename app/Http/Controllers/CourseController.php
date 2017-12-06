@@ -67,7 +67,5 @@ class CourseController extends Controller
         $course->save();
         return redirect('admin/course/fix/'.$idCourse)->with('thongbao','Sửa thành công');
     }
-    public function viewDetail(){
-        return view('coursedetail');
-    }
+   
 }
