@@ -78,3 +78,7 @@ Route::get('test1', function() {
    $person = $course->JoinCourse;
    echo count($person);
 });
+
+Route::get('blog', 'PostController@index');
+Route::post('blog', 'PostController@create')->name('blog');
+Route::get('/blog/show/{idPost}', 'PostController@show');

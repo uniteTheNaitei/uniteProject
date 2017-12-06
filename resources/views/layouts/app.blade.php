@@ -103,9 +103,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="schedule.html">Schedule</a>
+                                    <a href="blog">Blog</a>
                                 </li>
-                                <li><a href="trainer.html">Trainers</a></li>
+                                
                                 <li><a href="about.html">About</a></li>
                                 @guest
                                     <li><a href="/login">Login</a></li>
