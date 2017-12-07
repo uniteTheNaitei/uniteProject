@@ -18,12 +18,19 @@ class LikeController extends Controller
         for ($i=0; $i<count($posts); $i++){
             $p = Person::where('idPerson', $posts[$i]->idUser)->first();
             array_push($names, $p);
+        };
+        if ($req->like=="Like") {
+            $like = new takelike;
+            $like->idPost = $req->post;
+            $like->idPerson = $req->user;
+            $like->likeType = 2;
+            $like->save();
         }
-	 $like = new takelike;
-	 $like->idPost = $req->post;
-	 $like->idPerson= $req->user;
-	 $like->likeType=2;
-	 $like->save();
+        else
+        {
+            $like=takelike::where('idPost',$req->post)->delete();
+           
+        }
 	 // var_dump($likdedPostId);
 	 // die();
 	  $likdedPostId = $user->likedBlog;
