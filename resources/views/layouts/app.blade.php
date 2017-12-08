@@ -32,6 +32,8 @@
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{Asset('assets/css/animate.css')}}">
+    <link rel="stylesheet" href="{{Asset('css/register.css')}}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 
 
@@ -76,7 +78,9 @@
                                 <li><a href="{{route('most_popular')}}">Most Popular</a></li>
 
                                 @guest
+                                    <li><a href="/register">Register</a></li>
                                     <li><a href="/login">Login</a></li>
+
                                 @else
                                     <li>
                                         <a class="fh5co-sub-ddown">{{Auth::user()->name}}</a>

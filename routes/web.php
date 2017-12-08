@@ -81,3 +81,5 @@ Route::get('trainer','TrainerControllers@getAllTrainer')->name('trainer');
 Route::get('most_popular','TrainerControllers@getMostPopular')->name('most_popular');
 Route::get('trainer/course/{idCoach}','TrainerControllers@getCourseTrainer');
 Route::post('like','LikeController@postLike')->name('like');
+Route::get('register','RegisterController@getRegister');
+Route::post('postregister','RegisterController@postRegister')->name('postregister');

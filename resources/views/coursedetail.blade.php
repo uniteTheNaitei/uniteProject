@@ -11,9 +11,9 @@
            
            	   <br>
            	   <div style="margin-left: 250px">
-           	   	  <img width="500px"  src="{{$course->img_2}}">
-           	        <img width="500px"  src="{{$course->img_1}}">
-           	         <img width="500px"  src="{{$course->img_2}}">
+           	   	  <img width="300px"  src="{{$course->img_2}}">
+           	        <img width="300px"  src="{{$course->img_1}}">
+           	         <img width="300px"  src="{{$course->img_2}}">
            	        
            	    
                </div>
