@@ -57,11 +57,13 @@
 
             <br>
             <div style="margin-left: 250px">
-                <img width="500px" src="{{$course->img_2}}">
-                <img width="500px" src="{{$course->img_1}}">
-                <img width="500px" src="{{$course->img_2}}">
-                
-              
+
+                <img width="300px" src="{{$course->img_2}}">
+                <img width="300px" src="{{$course->img_1}}">
+                <img width="300px" src="{{$course->img_2}}">
+
+
+
             </div>
             <br>
 
@@ -71,11 +73,11 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     @foreach($lesson as $value)
 
-                        {{$b=0}}
+                        <?php $b=0 ?>
                         @foreach($a as $value1)
                             @if($value1->stt==$value->stt)
                                 @if($value1->complete==1)
-                                    {{$b=1}}
+                                    <?php $b=1?>
                                 @endif
                             @endif
                         @endforeach

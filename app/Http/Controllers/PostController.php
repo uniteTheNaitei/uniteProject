@@ -14,6 +14,10 @@ use App\Person;
 class PostController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index() {
     	$posts = BlogPost::where('idPost', '>', 0)->orderBy('Time', 'DESC')->paginate(5) ;
     	$title = 'Latest Posts';

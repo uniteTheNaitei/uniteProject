@@ -45,13 +45,22 @@
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <input type="hidden" name="post"  value="{{ $posts[$i]->idPost }}" />
                 <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
-                <input type="submit" value="Like" class="btn btn-default" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
-            @else 
-               <button class="btn btn-success" disabled>Liked</button>
+                <input type="submit" name="like" value="Like" class="btn btn-default" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span>
+                   </fieldset>
+            </form>
+            @else
+                    <form method="post"  action="{{route('like')}}">
+                        {{csrf_field()}}
+                        <fieldset>
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="post"  value="{{ $posts[$i]->idPost }}" />
+                            <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+                            <input type="submit" name="like" value="Liked" class="btn btn-success" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span>
+                        </fieldset>
+                    </form>
             @endif
            
-              <fieldset>     
-          </form>
+
         </div>
             @if(!Auth::guest() && ($posts[$i]->idUser == Auth::user()->id))
               @if($posts[$i])
