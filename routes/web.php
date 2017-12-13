@@ -72,6 +72,7 @@ Route::post('fix/{idPerson}','HomeController@postFix');
 Route::get('course/{id}','ReadmoreController@viewDetail')->name('course');
 Route::get('coursejoin/{idCourse}','ReadmoreController@join');
 Route::post('checkcourse','ReadmoreController@postJoin')->name('checkcourse');
+Route::post('addcommentcourse', 'CommentPostController@store_on_course')->name('addcommentcourse');
 Route::get('blog', 'PostController@index')->name('blog');
 Route::post('blog', 'PostController@create')->name('blog');
 Route::get('/blog/show/{idPost}', 'PostController@show');

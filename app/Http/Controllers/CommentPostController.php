@@ -19,4 +19,15 @@
         $input->save();
         return redirect()->back();   
       }
+    public function store_on_course(Request $request)
+      {
+        //on_post, from_user, body
+        $input = new comment();
+        $input->idUser = Auth::user()->idPerson;
+        $input->idPost = $request->get('on_post');
+        $input->content = $request->get('body');
+        $input->type = 2;
+        $input->save();
+        return redirect()->back();   
+      }
     }
