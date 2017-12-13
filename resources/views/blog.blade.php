@@ -64,11 +64,11 @@
           </h3>
           <p> Created by <a href="{{ url('/user/'.$names[$i]->name)}}">{{ $names[$i]->name }}</a></p>
         </div>
-        <div class="list-group-item">
+        <!-- <div class="list-group-item">
           <article>
             {!! str_limit($posts[$i]->content, $limit = 1500, $end = '....... <a href='.url("/".$posts[$i]->idPost).'>Read More</a>') !!}
           </article>
-        </div>
+        </div> -->
       </div>
       @endfor
       {!! $posts->render() !!}

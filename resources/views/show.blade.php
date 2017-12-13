@@ -19,6 +19,9 @@
         <h1>{{$post->title}}</h1>
         <br>
         <strong>{!! $post->content !!}</strong>
+        <br>
+        <br>
+        <img src={{$post->img_link}} alt="">
       </div>    
       <br>
       <div class="container">

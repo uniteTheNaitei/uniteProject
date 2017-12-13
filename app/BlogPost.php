@@ -16,6 +16,6 @@ class BlogPost extends Model
     }
 
     public function comment(){
-    	return $this->hasMany('App\comment', 'idPost', 'idCourse')->where('type', 2);
+    	return $this->hasMany('App\comment', 'idPost', 'idCourse')->where('type', 1);
     }
 }

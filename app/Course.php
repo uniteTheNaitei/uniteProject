@@ -25,7 +25,7 @@ class Course extends Model
 	}
 	
 	public function comment(){
-		return $this->hasMany('App\comment', 'idPost', 'idCourse')->where('type', 1);
+		return $this->hasMany('App\comment', 'idPost', 'idCourse')->where('type', 2);
 	}
 	
 	public function trainer(){

@@ -8,6 +8,7 @@ use App\Course;
 use App\Lesson;
 use App\JoinCourse;
 use App\takeLesson;
+use App\Person;
 class ReadmoreController extends Controller
 {
     //
@@ -19,7 +20,16 @@ class ReadmoreController extends Controller
      public function viewDetail($id){
       	$course=Course::find($id);
       	$lesson = $course -> lesson;
-      	$coursejoined=Auth::user()->idjoinCourse;
+        $names = [];
+        $comments = $course->comment;
+      	foreach ($comments as $comment){
+            //var_dump($comment ->content);
+            //die();
+            //$p = Person::where('idPerson', $comments[$i]->idUser)->first();
+            $p = $comment -> person;
+            array_push($names, $p);
+        }
+        $coursejoined=Auth::user()->idjoinCourse;
       	$b=0;
 
       	foreach ($coursejoined as $value)
@@ -33,12 +43,13 @@ class ReadmoreController extends Controller
       		}
       	};
       	if ($b==0){
-      		return view('coursedetail',["course"=>$course,"lesson"=>$lesson]);
+      		return view('coursedetail',["course"=>$course,"lesson"=>$lesson, "comments"=>$comments, "names"=>$names]);
       	} 
            else {
       	  	 $a = auth::user() -> idjoinCourse -> where('idCourse', $id) -> first() -> takeLesson;
       	  	 $timeStamps = $joinCourseId -> startTime;
-      		   return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a,"time"=>$timeStamps]);
+      		   return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a,"time"=>$timeStamps,
+                          "comments"=>$comments, "names"=>$names]);
       	} 
      	// $checkJoin=0;
      	// $joincourse = JoinCourse::where('idUser',Auth::user()->idPerson)->where('idCourse',$id)->first();
@@ -53,6 +64,16 @@ class ReadmoreController extends Controller
    public function join($id)
    {
       $course=Course::find($id);
+      $names = [];
+      $comments = $course->comment;
+      foreach ($comments as $comment){
+            //var_dump($comment ->content);
+            //die();
+            //$p = Person::where('idPerson', $comments[$i]->idUser)->first();
+            $p = $comment -> person;
+            array_push($names, $p);
+      }
+     
       $lesson = $course -> lesson;
       $joincourse=new JoinCourse;
       $joincourse->idCourse=$id;
@@ -67,14 +88,23 @@ class ReadmoreController extends Controller
       $joincourse = Auth::user() -> idjoinCourse -> where('idCourse', $id) -> first();
        $a = $joincourse -> takeLesson;
        $time = $joincourse-> startTime;
-     return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time]);
+       
+     return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time, "comments"=>$comments, "names"=>$names]);
    }
    public function postJoin(Request $request)
    {
         $course=Course::find($request->check);
         $lesson = $course -> lesson;
        $a = auth::user() -> idjoinCourse -> where('idCourse', $request->check)->first()->takeLesson;
-       
+       $names = [];
+       $comments = $course->comment;
+        foreach ($comments as $comment){
+            //var_dump($comment ->content);
+            //die();
+            //$p = Person::where('idPerson', $comments[$i]->idUser)->first();
+            $p = $comment -> person;
+            array_push($names, $p);
+        }
        // die(); 
        
        //$a = JoinCourse::find(1) -> takelesson;
@@ -103,6 +133,6 @@ class ReadmoreController extends Controller
        $joincourse = Auth::user() -> idjoinCourse -> where('idCourse',  $request->check) -> first();
        $a = $joincourse -> takeLesson;
        $time = $joincourse-> startTime;
-       return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time]);
+       return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"joincourse"=>$joincourse,"a"=>$a,"time"=>$time, "comments"=>$comments, "names"=>$names]);
    }
 }

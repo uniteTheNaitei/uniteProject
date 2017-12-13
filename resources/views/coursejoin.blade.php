@@ -92,20 +92,19 @@
                     }
                 }, 1000);
             </script>
-
-    </div>
-        <div class="container">
+    <br>
+    <div style="margin-left: 240px">
         <h2>Leave a comment</h2>
       </div>
       @if(Auth::guest())
         <p>Login to Comment</p>
       @else
-      <div class="container">
+      <div style="width: 600px; margin-left: 240px">
         <div class="panel-body">
-          <form method="post" action="{{route('addcomment')}}"> {{ csrf_field() }}
+          <form method="post" action="{{route('addcommentcourse')}}"> {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="on_post" value="{{ $post->idPost }}">
-            <input type="hidden" name="slug" value="{{ $post->slug }}">
+            <input type="hidden" name="on_post" value="{{ $course->idCourse }}">
+            <input type="hidden" name="slug" value="{{ $course->slug }}">
             <div class="form-group">
               <textarea required="required" placeholder="Enter comment here" name = "body" class="form-control"></textarea>
             </div>
@@ -114,10 +113,7 @@
         </div>
       </div>
       @endif
-      <div class="container">
-        <h1>Comments area</h1>
-      </div>
-      <div class="container">
+      <div style="margin-left: 240px">
         @if($comments)
         <ul style="list-style: none; padding: 0">
           @for($i=0;$i<count($comments);$i++)
@@ -136,9 +132,6 @@
         </ul>
         @endif
       </div>
-    @else
-    404 error
-    </div>
 
 @endsection
 

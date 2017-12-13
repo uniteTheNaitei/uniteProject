@@ -40,10 +40,10 @@
       @else
       <div style="width: 600px; margin-left: 240px">
         <div class="panel-body">
-          <form method="post" action="{{route('addcomment')}}"> {{ csrf_field() }}
+          <form method="post" action="{{route('addcommentcourse')}}"> {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="on_post" value="{{ csrf_token() }}">
-            <input type="hidden" name="slug" value="{{ csrf_token() }}">
+            <input type="hidden" name="on_post" value="{{ $course->idCourse }}">
+            <input type="hidden" name="slug" value="{{ $course->slug }}">
             <div class="form-group">
               <textarea required="required" placeholder="Enter comment here" name = "body" class="form-control"></textarea>
             </div>
