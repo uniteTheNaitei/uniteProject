@@ -38,7 +38,7 @@ class RegisterController extends Controller
         $person=new Person;
         $person->name=$request->name;
         $person->email=$request->email;
-        $person->password=$request->password;
+        $person->password=bcrypt($request->password);
         $person->weight=$request->weight;
         $person->height=$request->height;
         $person->address=$request->address;
