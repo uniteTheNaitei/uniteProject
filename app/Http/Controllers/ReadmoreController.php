@@ -31,7 +31,8 @@ class ReadmoreController extends Controller
         }
         $coursejoined=Auth::user()->idjoinCourse;
       	$b=0;
-
+         $user = Auth::user();
+      
       	foreach ($coursejoined as $value)
       	{
       		if ($value->idCourse==$id) 
@@ -42,14 +43,17 @@ class ReadmoreController extends Controller
       		  
       		}
       	};
+         $listlike= $user->likedCourse;
       	if ($b==0){
-      		return view('coursedetail',["course"=>$course,"lesson"=>$lesson, "comments"=>$comments, "names"=>$names]);
+      		return view('coursedetail',["course"=>$course,"lesson"=>$lesson, "comments"=>$comments, "names"=>$names, "listlike"=>$listlike]);
+
       	} 
            else {
       	  	 $a = auth::user() -> idjoinCourse -> where('idCourse', $id) -> first() -> takeLesson;
       	  	 $timeStamps = $joinCourseId -> startTime;
       		   return view('coursejoin',["course"=>$course,"lesson"=>$lesson,"a"=>$a,"time"=>$timeStamps,
-                          "comments"=>$comments, "names"=>$names]);
+                          "comments"=>$comments, "names"=>$names, "listlike"=>$listlike]);
+
       	} 
      	// $checkJoin=0;
      	// $joincourse = JoinCourse::where('idUser',Auth::user()->idPerson)->where('idCourse',$id)->first();

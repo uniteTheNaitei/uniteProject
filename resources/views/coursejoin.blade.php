@@ -2,7 +2,48 @@
 
 @section('content')
 
-    <h1 class="text-center" style="padding-top: 50px">{{$course->name}}</h1>
+    <div class="text-center" style="padding-top: 50px; font-size: 50px; font-weight: bold">
+           {{$course->name}}
+           <?php  $c=0;   ?>
+           <?php $listlike = Auth::user()->likedCourse; ?>
+             @if($listlike!=NULL)
+                  @foreach($listlike as $value)
+                      @if($value->idPost==$course->idCourse)   <?php $c=1 ?>  
+                      @endif
+                   @endforeach
+              @endif
+         
+          @if($c==0)
+          <div style="margin-left: 800px"> 
+               <form method="POST" action="{{route('likecourse')}}">
+                 {{csrf_field()}}
+               <fieldset> 
+               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <input type="hidden" name="course"  value="{{ $course->idCourse}}" />
+               <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+               <input type="submit" name="nut" value="Like" class="btn btn-default" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
+          </fieldset>
+                 </form>
+          </div> 
+           @else 
+             
+               <div style="margin-left: 800px"> 
+               <form method="POST" action="{{route('likecourse')}}">
+                 {{csrf_field()}}
+                <fieldset> 
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                 <input type="hidden" name="course"  value="{{ $course->idCourse}}" />
+                 <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+                 <input type="submit" name="nut" value="Liked" class="btn btn-success" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
+                </fieldset>
+                 </form>
+              </div> 
+              
+
+          @endif
+
+       </div>
+
 
     <div class="text-center">
     <h3>You have already enrolled this course : </h3>
@@ -19,8 +60,8 @@
                 <img width="500px" src="{{$course->img_2}}">
                 <img width="500px" src="{{$course->img_1}}">
                 <img width="500px" src="{{$course->img_2}}">
-
-
+                
+              
             </div>
             <br>
 

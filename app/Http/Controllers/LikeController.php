@@ -27,6 +27,6 @@ class LikeController extends Controller
 	 // var_dump($likdedPostId);
 	 // die();
 	  $likdedPostId = $user->likedBlog;
-		return view('blog')->withPosts($posts)->withTitle($title)->with('names', $names)->with('likdedPostId', $likdedPostId);
+		return redirect()->back()->withPosts($posts)->withTitle($title)->with('names', $names)->with('likdedPostId', $likdedPostId);
     }  
 }

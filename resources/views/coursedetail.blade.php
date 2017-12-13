@@ -3,7 +3,51 @@
 @extends('layouts.app')
 @section('content')
 
-			   <h2 class="text-center" style="padding-top: 50px">{{$course->name}}</h2>
+			 <div class="text-center" style="padding-top: 50px; font-size: 50px; font-weight: bold">
+           {{$course->name}}
+            {{$course->name}}
+           <?php  $c=0;   ?>
+           <?PHP $listlike = Auth::user()->likedCourse; ?>
+             @if($listlike!=NULL)
+                  @foreach($listlike as $value)
+                      @if($value->idPost==$course->idCourse)   <?php $c=1 ?>  
+                      @endif
+                   @endforeach
+              @endif
+          {{-- {{var_dump($c)}}
+          {{die()}} --}}
+          @if($c==0)
+          <div style="margin-left: 1000px"> 
+               <form method="POST" action="{{route('likecourse')}}">
+                 {{csrf_field()}}
+               <fieldset> 
+               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <input type="hidden" name="course"  value="{{ $course->idCourse}}" />
+               <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+              <input type="submit" name="nut" value="Like" class="btn btn-default" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
+          </fieldset>
+                 </form>
+          </div>
+              
+           @else 
+              <div style="margin-left: 1000px"> 
+               <form method="POST" action="{{route('likecourse')}}">
+                 {{csrf_field()}}
+               <fieldset> 
+               <input type="hidden" name="_token" value="{{ csrf_token() }}">
+               <input type="hidden" name="course"  value="{{ $course->idCourse}}" />
+               <input type="hidden" name="user"  value="{{ Auth::user()->idPerson }}" />
+              <input type="submit" name="nut" value="Liked" class="btn btn-success" aria-label="Left Align">  <span class="glyphicon glyphicon-thumbs-up " ></span> 
+          </fieldset>
+                 </form>
+          </div>
+          @endif
+         </div>
+
+         
+
+
+
 		<div class="row" style="padding-bottom: 20px">
          
            <br>		
@@ -15,7 +59,7 @@
            	        <img width="500px"  src="{{$course->img_1}}">
            	         <img width="500px"  src="{{$course->img_2}}">
            	        
-           	    
+           	       
                </div>
                <br>
                 @foreach($lesson as $value)
