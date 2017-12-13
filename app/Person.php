@@ -46,7 +46,7 @@ class Person extends Authenticatable
 	}
 	
 	public function likedCourse(){
-		return $this->hasManyThrough('App\Course', 'App\takelike', 'idperson', 'idCourse', 'idPerson', 'idPost')->where('likeType', 1);
+		return $this->hasMany('App\takelike', 'idPerson', 'idPerson')->where('likeType', 1);
 	}
 	
 	public function likedBlog(){

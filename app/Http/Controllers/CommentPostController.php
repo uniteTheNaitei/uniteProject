@@ -28,6 +28,6 @@
         $input->content = $request->get('body');
         $input->type = 2;
         $input->save();
-        return redirect()->back();   
+        return redirect('course/'.$request->on_post);   
       }
     }
