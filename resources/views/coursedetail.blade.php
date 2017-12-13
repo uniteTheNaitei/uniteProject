@@ -54,7 +54,7 @@
            <div class="col-md-12">
            
            	   <br>
-           	   <div style="margin-left: 250px">
+           	   <div style="margin-left: 450px">
            	   	  <img width="300px"  src="{{$course->img_2}}">
            	        <img width="300px"  src="{{$course->img_1}}">
            	         <img width="300px"  src="{{$course->img_2}}">
@@ -65,24 +65,24 @@
                 @foreach($lesson as $value)
                        
                 	    
-                         	<p style="margin-left:250px"> 
+                         	<p style="margin-left:450px"> 
                          	
                             <b>Lesson {{$value->stt+1}}</b>.   {{$value->infoLesson}} 
                          		</p>
                          
                   @endforeach
-                  <button class="btn " style="margin-left: 250px"><a href="/coursejoin/{{$course->idCourse}}">Start</a></button>
+                  <button class="btn " style="margin-left: 450px"><a href="/coursejoin/{{$course->idCourse}}">Start</a></button>
              
            </div>
 		</div>
 
-    <div style="margin-left: 240px">
+    <div style="margin-left: 450px">
         <h2>Leave a comment</h2>
       </div>
       @if(Auth::guest())
         <p>Login to Comment</p>
       @else
-      <div style="width: 600px; margin-left: 240px">
+      <div style="width: 600px; margin-left: 450px">
         <div class="panel-body">
           <form method="post" action="{{route('addcommentcourse')}}"> {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -96,7 +96,7 @@
         </div>
       </div>
       @endif
-      <div style="margin-left: 240px">
+      <div style="margin-left: 450px">
         @if($comments)
         <ul style="list-style: none; padding: 0">
           @for($i=0;$i<count($comments);$i++)

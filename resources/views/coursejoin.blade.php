@@ -56,7 +56,7 @@
         <div class="col-md-12">
 
             <br>
-            <div style="margin-left: 250px">
+            <div style="margin-left: 450px">
 
                 <img width="300px" src="{{$course->img_2}}">
                 <img width="300px" src="{{$course->img_1}}">
@@ -82,14 +82,14 @@
                             @endif
                         @endforeach
                         @if ($b==1)
-                            <p style="margin-left:250px">
+                            <p style="margin-left:450px">
                                 <input type="checkbox" name="checkbox[]" value="{{$value->stt}}" id="default" checked
                                        class="badgebox" style="width: 30px; height: 30px">
                                 <b>Lesson {{$value->stt+1}}</b>.{{$value->infoLesson}}
 
                             </p>
                         @else
-                            <p style="margin-left:250px">
+                            <p style="margin-left:450px">
                                 <input type="checkbox" name="checkbox[]" value="{{$value->stt}}" id="default"
                                        class="badgebox" style="width: 30px; height: 30px">
                                 <b>Lesson {{$value->stt+1}}</b>.{{$value->infoLesson}}
@@ -98,7 +98,7 @@
                         @endif
                     @endforeach
                     <input type="text" name="check" value="{{$course->idCourse}}" style="display: none">
-                    <input type="submit" value="Update" class="btn btn-success" style="margin-left: 250px">
+                    <input type="submit" value="Update" class="btn btn-success" style="margin-left: 450px">
 
 
                 </fieldset>
@@ -136,13 +136,13 @@
                 }, 1000);
             </script>
     <br>
-    <div style="margin-left: 240px">
+    <div style="margin-left: 450px">
         <h2>Leave a comment</h2>
       </div>
       @if(Auth::guest())
         <p>Login to Comment</p>
       @else
-      <div style="width: 600px; margin-left: 240px">
+      <div style="width: 600px; margin-left: 450px">
         <div class="panel-body">
           <form method="post" action="{{route('addcommentcourse')}}"> {{ csrf_field() }}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -156,7 +156,7 @@
         </div>
       </div>
       @endif
-      <div style="margin-left: 240px">
+      <div style="margin-left: 450px">
         @if($comments)
         <ul style="list-style: none; padding: 0">
           @for($i=0;$i<count($comments);$i++)

@@ -35,5 +35,5 @@ input[type=checkbox], input[type=radio] { margin: 8px 0 0; margin-top: 1px\9; li
 input::-webkit-input-placeholder { color: #595857 !important; }
 textarea::-webkit-input-placeholder { color: #595857 !important; }
 input[type=checkbox] {
-    transform: scale(1.5);
+    transform: scale(1);
 }
